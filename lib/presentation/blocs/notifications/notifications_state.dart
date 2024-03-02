@@ -1,27 +1,25 @@
 part of 'notifications_bloc.dart';
 
-class NotificationsState extends Equatable {
+class NotificationsState extends Equatable{
   const NotificationsState({
     // initial state
     this.status = AuthorizationStatus.notDetermined,
-    this.notifications = const [],
+    this.notifications = const[],
   });
 
   //
   final AuthorizationStatus status;
 
-  /// TODO: CREATE MODEl FOR NOTIFICATIONS
-  final List<dynamic> notifications;
+  final List<PushMessage> notifications;
 
   NotificationsState copyWith({
     AuthorizationStatus? status,
-    List<dynamic>? notifications,
-  }) =>
-      NotificationsState(
-        status: status ?? this.status,
-        notifications: notifications ?? this.notifications,
-      );
+    List<PushMessage>? notifications,
+  }) => NotificationsState(
+    status: status ?? this.status,
+    notifications: notifications ?? this.notifications,
+  );
 
   @override
-  List<Object> get props => [];
+  List<Object> get props => [ status, notifications ];
 }
