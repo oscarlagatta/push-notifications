@@ -10,15 +10,18 @@ class DetailsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final PushMessage? message = context.watch<NotificationsBloc>().getMessageById(pushMessageId);
+    final PushMessage? message =
+        context.watch<NotificationsBloc>().getMessageById(pushMessageId);
 
     return Scaffold(
       appBar: AppBar(
         title: const Text('Push Details'),
       ),
-      body: message != null ? _DetailsView(message: message) : const Center(
-        child: Text('Notification doesn\'t exist'),
-      ),
+      body: message != null
+          ? _DetailsView(message: message)
+          : const Center(
+              child: Text('Notification doesn\'t exist'),
+            ),
     );
   }
 }
@@ -30,26 +33,25 @@ class _DetailsView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final textStyles = Theme
-        .of(context)
-        .textTheme;
+    final textStyles = Theme.of(context).textTheme;
 
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 20,),
+      padding: const EdgeInsets.symmetric(
+        horizontal: 10,
+        vertical: 20,
+      ),
       child: Column(
         children: [
-          if (message.imageUrl != null)
-            Image.network(message.imageUrl!),
-
-          const SizedBox(height: 30,),
-
+          if (message.imageUrl != null) Image.network(message.imageUrl!),
+          const SizedBox(
+            height: 30,
+          ),
           Text(message.title, style: textStyles.titleMedium),
           Text(message.body),
-
           const Divider(),
-
-          Text(message.data.toString(),),
-
+          Text(
+            message.data.toString(),
+          ),
         ],
       ),
     );
