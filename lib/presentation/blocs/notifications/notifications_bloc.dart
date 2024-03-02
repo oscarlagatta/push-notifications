@@ -35,9 +35,6 @@ class NotificationsBloc extends Bloc<NotificationsEvent, NotificationsState> {
     on<NotificationStatusChanged>(_onNotificationStatusChanged);
     on<NotificationReceived>(_onPushMessageReceived);
 
-    /// TODO 3: Create listener # _onPushMessageReceived
-    ///
-
     // Verify the state of the notifications
     _initialStatusCheck();
 
